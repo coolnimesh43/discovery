@@ -10,6 +10,8 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.Environment;
 
+import ch.qos.logback.core.util.EnvUtil;
+
 /**
  * Runner class for Euraka Discovery Server.
  * 
@@ -21,9 +23,10 @@ import org.springframework.core.env.Environment;
 public class Application {
 
     public static void main(String[] args) throws UnknownHostException {
+        System.out.println(EnvUtil.isWindows());
         Properties systemProperties = new Properties();
         systemProperties.setProperty("spring.config.name", "registration-server");
-        System.setProperties(systemProperties);
+        System.setProperty("spring.config.name", "registration-server");
         ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(Application.class, args);
         Environment env = configurableApplicationContext.getEnvironment();
         System.out.println("Starting Discovery Server at \n \n");

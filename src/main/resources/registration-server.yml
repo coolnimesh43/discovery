@@ -13,3 +13,4 @@ server:
 spring:
   thymeleaf:
     enabled: false     # Disable Thymeleaf 
+
